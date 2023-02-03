@@ -73,9 +73,9 @@ async function run() {
         var dbName = client.db("dxcDb");
         var collName = dbName.collection("employess");
         const insertDoc = { "empId": 202, "empName": "tara" };
-        var res = await collName.insertMany(empArr);
-        console.log("Response of insertOne: Inserted Id:", res.insertedId);
-        console.log("Response of insertOne: Inserted Count:", res.insertedCount);
+        await collName.insertMany(empArr).then((res) => {
+            console.log("Response of insertMany:", res);
+        });
     }
     catch (err) {
         console.log("Error", err)
